@@ -40,3 +40,16 @@
   tr:hover {
     background-color: #f1f1f1;
   }
+
+  .dropdown-container {
+    margin-top: 20px;
+  }
+
+  select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }

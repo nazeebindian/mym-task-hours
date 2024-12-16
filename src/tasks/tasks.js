@@ -1,4 +1,4 @@
-async function loadData() {
+async function loadData(filter = "all") {
   console.log("====reached here");
   try {
     // Make the backend call to fetch data
@@ -6,7 +6,10 @@ async function loadData() {
 
     const SHEET_ID = "1X9MNBQpWpv8wlLJrmZ133TQ8REO9s1OHHiYS1_bzlvQ";
     const GID = "1606761809";
-    const QUERY = `SELECT * `;
+    let QUERY = `SELECT * `;
+    if (filter !== "all") {
+      QUERY = `SELECT * WHERE C="${filter}"`;
+    }
     const res = await readGsheetData(SHEET_ID, GID, QUERY);
     const columns = [...res?.table?.cols];
     res?.table?.rows?.map((item) => {
@@ -20,8 +23,8 @@ async function loadData() {
     });
 
     // Populate table with data
-    const tableBody = document.querySelector("#data-table");
-    // tableBody.innerHTML = "";
+    const tableBody = document.querySelector('#data-table tbody');    
+    tableBody.innerHTML = "";
 
     dataArray.forEach((row) => {
       const tr = document.createElement("tr");
@@ -45,3 +48,8 @@ async function loadData() {
 
 // Load data when the page loads
 loadData();
+
+// Add event listener to dropdown
+document.querySelector("#data-filter").addEventListener("change", (event) => {
+  loadData(event.target.value);
+});
