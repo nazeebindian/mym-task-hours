@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0px;
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="src/utility-functions/google-sheet-api.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+      rel="stylesheet"
+    />
+    <link href="index.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-left">
+        <button id="backButton" class="icon-button">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+      <div class="navbar-center">
+        <a onclick="loadPage('products');" class="logo">MySite</a>
+        <!--------search bar would be good-->
+      </div>
+      <div class="navbar-right">
+        <a class="icon-button" onclick="loadPage('cart','main-content')">
+          <i class="fas fa-shopping-cart"></i> Cart (<span id="cartCount"
+            >0</span
+          >)
+        </a>
+        <a href="/orders" class="icon-button">
+          <i class="fas fa-box"></i> Orders
+        </a>
+        <div class="dropdown">
+          <button class="icon-button dropdown-toggle">
+            <i class="fas fa-user"></i> Account
+          </button>
+          <div class="dropdown-content">
+            <a href="/profile"><i class="fas fa-user-circle"></i> Profile</a>
+            <a onclick="loadPage('login')" id="loginLogoutButton"
+              ><i class="fas fa-sign-in-alt"></i> Login</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="fab-container">
+      <button class="fab" onclick="goBack()">🔙</button>
+      <button class="fab" onclick="openCart()">🛒</button>
+    </div>
+
+    <div class="main-content" id="main-content"></div>
+    <!-- <a href="#"> <i class="fas fa-user-circle userIcon"></i> </a> -->
+    <div id="login"></div>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
 
