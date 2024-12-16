@@ -1,3 +1,22 @@
+function formatDate(rawDate) {
+  console.log("===reached here", rawDate);
+  const dateMatch = /Date\((\d+),(\d+),(\d+)\)/.exec(rawDate);
+  if (dateMatch) {
+    const year = parseInt(dateMatch[1], 10);
+    const month = parseInt(dateMatch[2], 10); // JavaScript months are 0-indexed
+    const day = parseInt(dateMatch[3], 10);
+    const formattedDate = new Date(year, month, day).toLocaleDateString(
+      "en-US",
+      {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+      }
+    );
+    return formattedDate;
+  }
+  return rawDate; // Return raw date if the format doesn't match
+}
 async function loadData(filter = "all") {
   console.log("====reached here");
   try {
@@ -23,7 +42,7 @@ async function loadData(filter = "all") {
     });
 
     // Populate table with data
-    const tableBody = document.querySelector('#data-table tbody');    
+    const tableBody = document.querySelector("#data-table tbody");
     tableBody.innerHTML = "";
 
     dataArray.forEach((row) => {
@@ -31,13 +50,13 @@ async function loadData(filter = "all") {
 
       // Add each column value to the row
       tr.innerHTML = `
-          <td>${row.Date || ""}</td>
+          <td>${formatDate(row.Date) || ""}</td>
           <td>${row?.["Name"] || ""}</td>
           <td>${row?.["Task"] || ""}</td>
-          <td>${row?.["Time Spent (minutes)"] || ""}</td>
           <td>${row?.["Percentage Completion"] || ""}</td>
-          <td>${(row?.["HRS SPENT"] / 60).toFixed(2) || ""}</td>
-        `;
+          `;
+      //   <td>${row?.["Time Spent (minutes)"] || ""}</td>
+      //   <td>${(row?.["HRS SPENT"] / 60).toFixed(2) || ""}</td>
 
       tableBody.appendChild(tr);
     });
