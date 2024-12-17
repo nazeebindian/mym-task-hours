@@ -9,7 +9,7 @@
   <div class="dropdown-container">
     <label for="data-filter">Employee:</label>
     <select id="data-filter">
-      <option value="Nazeeb Muhammed">Nazeeb Muhammed</option>
+      <option value="all">All</option>
       <option value="Mohammed Shafeer">Mohammed Shafeer</option>
       <option value="Aboo Bakker Siddheeq">Aboo Bakker Siddheeq</option>
       <option value="Navaneeth">Navaneeth</option>
@@ -27,7 +27,83 @@
       <option value="Fahmida">Fahmida</option>
     </select>
   </div>
+  <div class="date-picker-container">
+    <!-- Left arrow button -->
+    <button id="prevDate" title="Previous Date">&#8592;</button>
+
+    <!-- Date Picker -->
+    <input type="date" id="datePicker" />
+
+    <!-- Right arrow button -->
+    <button id="nextDate" title="Next Date">&#8594;</button>
+  </div>
 </div>
+
+<div class="time-section">
+  <!-- In Time Box -->
+  <div class="time-box">
+    <h2>In Time</h2>
+    <p id="inTime">08:00 AM</p>
+  </div>
+  <!-- Out Time Box -->
+  <div class="time-box">
+    <h2>Out Time</h2>
+    <p id="outTime">05:00 PM</p>
+  </div>
+</div>
+<form
+  id="data-form"
+  style="
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    margin: auto;
+  "
+>
+  <input
+    name="entry.1644809976"
+    type="date"
+    id="dateInput"
+    placeholder="Select Date"
+  />
+  <input
+    name="entry.1852588310"
+    type="text"
+    id="nameInput"
+    placeholder="Enter Name"
+  />
+  <input
+    name="entry.1652865217"
+    type="text"
+    id="taskInput"
+    placeholder="Enter Task"
+  />
+  <input
+    name="entry.180882977"
+    type="number"
+    id="percentageInput"
+    min="0"
+    max="100"
+    placeholder="0-100"
+  />
+  <button
+    style="
+      padding: 8px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      background: rgba(1, 56, 120, 1);
+      color: rgba(255, 255, 255, 1);
+    "
+    type="submit"
+  >
+    Save
+  </button>
+  <!-- </td> -->
+  <!-- </tr> -->
+</form>
 <div class="table-container">
   <table id="data-table">
     <thead>
@@ -35,9 +111,7 @@
         <th>Date</th>
         <th>Name</th>
         <th>Task</th>
-        <!-- <th>Time Spent (minutes)</th> -->
         <th>Percentage Completion</th>
-        <!-- <th>HRS SPENT</th> -->
       </tr>
     </thead>
     <tbody>

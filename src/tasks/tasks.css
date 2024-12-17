@@ -53,3 +53,79 @@
     outline: none;
     cursor: pointer;
   }
+
+  .date-picker-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  button {
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  input[type="date"] {
+    font-size: 18px;
+    padding: 5px;
+  }
+
+  .time-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+  }
+
+  .time-box {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .time-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .time-box h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #0d6efd; /* Blue Heading */
+  }
+
+  .time-box p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+
+  th, td {
+    text-align: center;
+    padding: 10px;
+  }
+
+  th {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+
+  input {
+    width: 90%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  input:focus {
+    border-color: #0d6efd;
+    outline: none;
+  }
