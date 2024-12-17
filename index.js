@@ -30,7 +30,7 @@ async function loadPage(page, id, state) {
       removeDynamicResources();
       // Fetch HTML content for the new page
       mainRoutes?.[page]?.pages?.forEach((ref) =>
-        loadHtmlBehind(ref?.[0], ref?.[1] || id)
+        loadContent(ref?.[0], ref?.[1] || id)
       );
 
       // Dynamically load new styles and scripts
