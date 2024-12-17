@@ -56,6 +56,9 @@ async function loadData() {
   try {
     // Make the backend call to fetch data
     const dataArray = [];
+    let tasksArray = [];
+    let timeInArray = [];
+    let timeOutArray = [];
 
     const SHEET_ID = "1X9MNBQpWpv8wlLJrmZ133TQ8REO9s1OHHiYS1_bzlvQ";
     const GID = "1606761809";
@@ -68,7 +71,7 @@ async function loadData() {
     } else {
       QUERY = `${QUERY} WHERE C = date '${formatDateToYYYYMMDD(DATE)}'`;
     }
-    QUERY = `${QUERY} AND D != 'IN-TIME' AND D != 'OUT-TIME' ORDER BY A DESC`;
+    QUERY = `${QUERY} ORDER BY A DESC`;
     const res = await readGsheetData(SHEET_ID, GID, QUERY);
     const columns = [...res?.table?.cols];
     res?.table?.rows?.map((item) => {
@@ -84,10 +87,38 @@ async function loadData() {
     // Populate table with data
     const tableBody = document.querySelector("#data-table tbody");
     tableBody.innerHTML = "";
+    tasksArray = dataArray?.filter(
+      (item) =>
+        item?.TASK !== "IN-TIME" &&
+        item?.TASK !== "OUT-TIME" &&
+        item?.TASK !== "BREAK-TIME"
+    );
+    if (EMPLOYEE !== "all") {
+      timeInArray = dataArray?.filter((item) => item?.TASK === "IN-TIME");
+      timeOutArray = dataArray?.filter((item) => item?.TASK === "OUT-TIME");
+      breakTimeArray = dataArray?.filter((item) => item?.TASK === "BREAK-TIME");
+      // Updating HTML elements dynamically
+      document.getElementById("dateInput").value =
+        formatDateToYYYYMMDD(DATE) || "";
+      document.getElementById("nameInput").value = EMPLOYEE || "";
 
-    dataArray.forEach((row) => {
+      document.getElementById("inDateInput").value =
+        formatDateToYYYYMMDD(DATE) || "";
+      document.getElementById("inNameInput").value = EMPLOYEE || "";
+      document.getElementById("outDateInput").value =
+        formatDateToYYYYMMDD(DATE) || "";
+      document.getElementById("outNameInput").value = EMPLOYEE || "";
+      document.getElementById("breakDateInput").value =
+        formatDateToYYYYMMDD(DATE) || "";
+      document.getElementById("breakNameInput").value = EMPLOYEE || "";
+
+      document.getElementById("breakTime").value =
+        breakTimeArray?.[0]?.VALUE || "";
+      document.getElementById("inTime").value = timeInArray?.[0]?.VALUE || "";
+      document.getElementById("outTime").value = timeOutArray?.[0]?.VALUE || "";
+    }
+    tasksArray.forEach((row) => {
       const tr = document.createElement("tr");
-
       // Add each column value to the row
       tr.innerHTML = `
           <td>${formatDate(row.DATE) || ""}</td>
@@ -95,9 +126,6 @@ async function loadData() {
           <td>${row?.TASK || ""}</td>
           <td>${row?.VALUE || ""}</td>
           `;
-      //   <td>${row?.["Time Spent (minutes)"] || ""}</td>
-      //   <td>${(row?.["HRS SPENT"] / 60).toFixed(2) || ""}</td>
-
       tableBody.appendChild(tr);
     });
   } catch (error) {
@@ -114,22 +142,9 @@ document.querySelector("#data-filter").addEventListener("change", (event) => {
   loadData();
 });
 
-// Simulating data coming from backend
-const backendData = {
-  date: "2024-12-17",
-  inTime: "08:15 AM",
-  outTime: "06:00 PM",
-};
-
-// Updating HTML elements dynamically
-document.getElementById("inTime").innerText = backendData.inTime;
-document.getElementById("outTime").innerText = backendData.outTime;
-
-
 document
-  .getElementById("data-form")
+  .getElementById("data-form1")
   .addEventListener("submit", function (event) {
-    console.log("===reached here");
     event.preventDefault();
 
     const formData = new FormData(this);
@@ -143,7 +158,82 @@ document
     })
       .then((response) => {
         // document.getElementById('status').textContent = 'Form submitted successfully!';
-        document.getElementById("data-form").reset();
+        setTimeout(loadData, 2000);
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        document.getElementById("status").textContent =
+          "Error submitting form.";
+      });
+  });
+
+document
+  .getElementById("data-form2")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const url =
+      "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrkEzUm1Xz3EwpF647bzH3fHfcEkc-wldGKNuOuO80Y6-0zg/formResponse"; // Replace with your form action URL
+
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData,
+    })
+      .then((response) => {
+        // document.getElementById('status').textContent = 'Form submitted successfully!';
+        setTimeout(loadData, 2000);
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        document.getElementById("status").textContent =
+          "Error submitting form.";
+      });
+  });
+
+document
+  .getElementById("data-form3")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const url =
+      "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrkEzUm1Xz3EwpF647bzH3fHfcEkc-wldGKNuOuO80Y6-0zg/formResponse"; // Replace with your form action URL
+
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData,
+    })
+      .then((response) => {
+        // document.getElementById('status').textContent = 'Form submitted successfully!';
+        document.getElementById("data-form3").reset();
+        setTimeout(loadData, 2000);
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        document.getElementById("status").textContent =
+          "Error submitting form.";
+      });
+  });
+
+document
+  .getElementById("data-form4")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const url =
+      "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdrkEzUm1Xz3EwpF647bzH3fHfcEkc-wldGKNuOuO80Y6-0zg/formResponse"; // Replace with your form action URL
+
+    fetch(url, {
+      method: "POST",
+      mode: "no-cors",
+      body: formData,
+    })
+      .then((response) => {
+        // document.getElementById('status').textContent = 'Form submitted successfully!';
         setTimeout(loadData, 2000);
       })
       .catch((error) => {

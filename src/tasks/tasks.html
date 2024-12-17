@@ -42,68 +42,221 @@
 <div class="time-section">
   <!-- In Time Box -->
   <div class="time-box">
-    <h2>In Time</h2>
-    <p id="inTime">08:00 AM</p>
+    <form id="data-form1">
+      <div style="display: flex">
+        <h2>In Time</h2>
+        <button
+          style="
+            padding: 2px 5px;
+            margin: 5px;
+            margin-top: 0px;
+            font-size: smaller;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background: rgba(1, 56, 120, 1);
+            color: rgba(255, 255, 255, 1);
+          "
+          type="submit"
+        >
+          update
+        </button>
+      </div>
+      <input
+        name="entry.1644809976"
+        type="hidden"
+        id="inDateInput"
+        placeholder="Select Date"
+        value=""
+      />
+      <input
+        name="entry.1852588310"
+        type="hidden"
+        id="inNameInput"
+        placeholder="Enter Name"
+        value=""
+      />
+      <input
+        name="entry.1652865217"
+        type="hidden"
+        id="inTaskInput"
+        placeholder="Enter Task"
+        value="IN-TIME"
+      />
+      <input
+        name="entry.180882977"
+        type="text"
+        id="inTime"
+        placeholder="00:00 AM"
+      />
+    </form>
   </div>
   <!-- Out Time Box -->
   <div class="time-box">
-    <h2>Out Time</h2>
-    <p id="outTime">05:00 PM</p>
+    <form id="data-form2">
+      <div style="display: flex">
+        <h2>Out Time</h2>
+        <button
+          style="
+            padding: 2px 5px;
+            margin: 5px;
+            margin-top: 0px;
+            font-size: smaller;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background: rgba(1, 56, 120, 1);
+            color: rgba(255, 255, 255, 1);
+          "
+          type="submit"
+        >
+          update
+        </button>
+      </div>
+      <input
+        name="entry.1644809976"
+        type="hidden"
+        id="outDateInput"
+        placeholder="Select Date"
+        value=""
+      />
+      <input
+        name="entry.1852588310"
+        type="hidden"
+        id="outNameInput"
+        placeholder="Enter Name"
+        value=""
+      />
+      <input
+        name="entry.1652865217"
+        type="hidden"
+        id="outTaskInput"
+        placeholder="Enter Task"
+        value="OUT-TIME"
+      />
+      <input
+        name="entry.180882977"
+        type="text"
+        id="outTime"
+        placeholder="00:00 PM"
+      />
+    </form>
+  </div>
+
+  <div class="time-box">
+    <form id="data-form4">
+      <div style="display: flex">
+        <h2>Break Time (min)</h2>
+        <button
+          style="
+            padding: 2px 5px;
+            margin: 5px;
+            margin-top: 0px;
+            font-size: smaller;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background: rgba(1, 56, 120, 1);
+            color: rgba(255, 255, 255, 1);
+          "
+          type="submit"
+        >
+          update
+        </button>
+      </div>
+      <input
+        name="entry.1644809976"
+        type="hidden"
+        id="breakDateInput"
+        placeholder="Select Date"
+        value=""
+      />
+      <input
+        name="entry.1852588310"
+        type="hidden"
+        id="breakNameInput"
+        placeholder="Enter Name"
+        value=""
+      />
+      <input
+        name="entry.1652865217"
+        type="hidden"
+        id="breakTaskInput"
+        placeholder="Enter Task"
+        value="BREAK-TIME"
+      />
+      <input
+        name="entry.180882977"
+        type="text"
+        id="breakTime"
+        placeholder="00"
+      />
+    </form>
   </div>
 </div>
-<form
-  id="data-form"
-  style="
-    display: flex;
-    width: fit-content;
-    justify-content: center;
-    margin: auto;
-  "
->
-  <input
-    name="entry.1644809976"
-    type="date"
-    id="dateInput"
-    placeholder="Select Date"
-  />
-  <input
-    name="entry.1852588310"
-    type="text"
-    id="nameInput"
-    placeholder="Enter Name"
-  />
-  <input
-    name="entry.1652865217"
-    type="text"
-    id="taskInput"
-    placeholder="Enter Task"
-  />
-  <input
-    name="entry.180882977"
-    type="number"
-    id="percentageInput"
-    min="0"
-    max="100"
-    placeholder="0-100"
-  />
-  <button
+
+<div style="margin: auto; margin-bottom: 1rem" class="time-box">
+  <form
+    id="data-form3"
     style="
-      padding: 8px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      background: rgba(1, 56, 120, 1);
-      color: rgba(255, 255, 255, 1);
+      display: flex;
+      width: fit-content;
+      justify-content: center;
+      margin: auto;
     "
-    type="submit"
   >
-    Save
-  </button>
-  <!-- </td> -->
-  <!-- </tr> -->
-</form>
+    <input
+      name="entry.1644809976"
+      type="hidden"
+      id="dateInput"
+      placeholder="Select Date"
+    />
+    <input
+      name="entry.1852588310"
+      type="hidden"
+      id="nameInput"
+      placeholder="Enter Name"
+    />
+    <input
+      name="entry.1652865217"
+      type="text"
+      id="taskInput"
+      style="width: 40rem"
+      placeholder="Enter Task"
+    />
+    <input
+      name="entry.180882977"
+      type="number"
+      id="percentageInput"
+      min="0"
+      max="100"
+      placeholder="0-100"
+      style="width: 5rem"
+    />
+    <button
+      style="
+        padding: 2px 5px;
+        margin: 5px;
+        margin-top: 0px;
+        font-size: smaller;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        background: rgba(1, 56, 120, 1);
+        color: rgba(255, 255, 255, 1);
+      "
+      type="submit"
+    >
+      Save Task
+    </button>
+    <!-- </td> -->
+    <!-- </tr> -->
+  </form>
+</div>
 <div class="table-container">
   <table id="data-table">
     <thead>

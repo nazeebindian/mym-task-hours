@@ -80,17 +80,19 @@
   }
 
   .time-box {
-    background-color: #fff;
+    background-color: #e1f4ff;
     color: #333;
     padding: 10px 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s;
+    margin: 1rem;
+    width: fit-content;
   }
 
   .time-box:hover {
-    transform: translateY(-5px);
+    /* transform: translateY(-5px); */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   }
 
